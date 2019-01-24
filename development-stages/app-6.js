@@ -1,29 +1,11 @@
+
 class ProductList extends React.Component {
-  state = {
-    products: [],
-  };
-
-  async componentDidMount() {
-    this.setState({ products: Seed.products });
-  }
-
-  handleProductUpVote = async (productId) => {
-    const nextProducts = this.state.products.map((product) => {
-      if (product.id === productId) {
-        return Object.assign({}, product, {
-          votes: product.votes + 1,
-        });
-      } else {
-        return product;
-      }
-    });
-    this.setState({
-      products: nextProducts,
-    });
+  handleProductUpVote(productId) {
+    console.log(productId + ' was upvoted.');
   }
 
   render() {
-    const products = this.state.products.sort((a, b) => (
+    const products = Seed.products.sort((a, b) => (
       b.votes - a.votes
     ));
     const productComponents = products.map((product) => (
@@ -32,7 +14,7 @@ class ProductList extends React.Component {
         id={product.id}
         title={product.title}
         description={product.description}
-        url='#'
+        url={product.url}
         votes={product.votes}
         submitterAvatarUrl={product.submitterAvatarUrl}
         productImageUrl={product.productImageUrl}
@@ -48,9 +30,16 @@ class ProductList extends React.Component {
 }
 
 class Product extends React.Component {
-  handleUpVote = () => (
-    this.props.onVote(this.props.id)
-  );
+  constructor(props) {
+    super(props);
+
+    this.handleUpVote = this.handleUpVote.bind(this);
+  }
+
+  // Inside `Product`
+  handleUpVote() {
+    this.props.onVote(this.props.id);
+  }
 
   render() {
     return (
@@ -58,6 +47,7 @@ class Product extends React.Component {
         <div className='image'>
           <img src={this.props.productImageUrl} />
         </div>
+        {/* Inside `render` for Product` */}
         <div className='middle aligned content'>
           <div className='header'>
             <a onClick={this.handleUpVote}>

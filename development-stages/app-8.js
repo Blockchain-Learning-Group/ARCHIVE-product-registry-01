@@ -1,25 +1,18 @@
 class ProductList extends React.Component {
-  state = {
-    products: [],
-  };
+  constructor(props) {
+    super(props);
 
-  async componentDidMount() {
+    this.state = {
+      products: [],
+    };
+  }
+
+  componentDidMount() {
     this.setState({ products: Seed.products });
   }
 
-  handleProductUpVote = async (productId) => {
-    const nextProducts = this.state.products.map((product) => {
-      if (product.id === productId) {
-        return Object.assign({}, product, {
-          votes: product.votes + 1,
-        });
-      } else {
-        return product;
-      }
-    });
-    this.setState({
-      products: nextProducts,
-    });
+  handleProductUpVote(productId) {
+    console.log(productId + ' was upvoted.');
   }
 
   render() {
@@ -32,7 +25,7 @@ class ProductList extends React.Component {
         id={product.id}
         title={product.title}
         description={product.description}
-        url='#'
+        url={product.url}
         votes={product.votes}
         submitterAvatarUrl={product.submitterAvatarUrl}
         productImageUrl={product.productImageUrl}
@@ -48,9 +41,15 @@ class ProductList extends React.Component {
 }
 
 class Product extends React.Component {
-  handleUpVote = () => (
-    this.props.onVote(this.props.id)
-  );
+  constructor(props) {
+    super(props);
+
+    this.handleUpVote = this.handleUpVote.bind(this);
+  }
+
+  handleUpVote() {
+    this.props.onVote(this.props.id);
+  }
 
   render() {
     return (
