@@ -1,13 +1,13 @@
-class ProductList extends React.Component {
+class ProductRegistry extends React.Component {
   state = {
     products: [],
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.setState({ products: Seed.products });
   }
 
-  handleProductUpVote = async (productId) => {
+  handleProductUpVote(productId) {
     const nextProducts = this.state.products.map((product) => {
       if (product.id === productId) {
         return Object.assign({}, product, {
@@ -87,6 +87,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
+  <ProductRegistry />,
   document.getElementById('content')
 );

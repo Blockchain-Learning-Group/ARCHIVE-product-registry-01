@@ -1,5 +1,5 @@
 
-class ProductList extends React.Component {
+class ProductRegistry extends React.Component {
   handleProductUpVote(productId) {
     console.log(productId + ' was upvoted.');
   }
@@ -77,6 +77,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
+  <ProductRegistry />,
   document.getElementById('content')
 );

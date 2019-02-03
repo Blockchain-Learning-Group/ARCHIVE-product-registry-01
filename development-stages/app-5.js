@@ -1,5 +1,5 @@
 
-class ProductList extends React.Component {
+class ProductRegistry extends React.Component {
   render() {
     const products = Seed.products.sort((a, b) => (
       b.votes - a.votes
@@ -60,6 +60,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
+  <ProductRegistry />,
   document.getElementById('content')
 );

@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign, operator-assignment */
 
-class ProductList extends React.Component {
+class ProductRegistry extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,7 +15,7 @@ class ProductList extends React.Component {
     this.setState({ products: Seed.products });
   }
 
-  // Inside `ProductList`
+  // Inside `ProductRegistry`
   handleProductUpVote(productId) {
     const nextProducts = this.state.products.map((product) => {
       if (product.id === productId) {
@@ -102,6 +102,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
+  <ProductRegistry />,
   document.getElementById('content')
 );

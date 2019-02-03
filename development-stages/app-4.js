@@ -1,5 +1,5 @@
 
-class ProductList extends React.Component {
+class ProductRegistry extends React.Component {
   render() {
     const productComponents = Seed.products.map((product) => (
       <Product
@@ -57,6 +57,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
+  <ProductRegistry />,
   document.getElementById('content')
 );

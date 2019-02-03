@@ -1,5 +1,5 @@
 
-class ProductList extends React.Component {
+class ProductRegistry extends React.Component {
   render() {
     const product = Seed.products[0];
     return (
@@ -54,6 +54,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
+  <ProductRegistry />,
   document.getElementById('content')
 );

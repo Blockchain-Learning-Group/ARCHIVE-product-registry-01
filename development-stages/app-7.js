@@ -1,5 +1,5 @@
 
-class ProductList extends React.Component {
+class ProductRegistry extends React.Component {
   constructor(props) {
     super(props);
 
@@ -87,6 +87,6 @@ class Product extends React.Component {
 }
 
 ReactDOM.render(
-  <ProductList />,
+  <ProductRegistry />,
   document.getElementById('content')
 );
